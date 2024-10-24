@@ -43,7 +43,7 @@ const CustomDrawerComponent = (props) => (
    <View>
        <View style={{height: height-520}}>
            <Text style={{ textAlign: 'center', position: 'absolute', bottom:0, left:30 }}>
-               DDL APP VERSION 1.0 {'\n'} COPYRIGHT &copy; Darakht-e Danesh
+               DDL APP VERSION .0 {'\n'} COPYRIGHT &copy; Darakht-e Danesh
            </Text>
        </View>
    </View>
@@ -86,6 +86,18 @@ const HomeStack = createStackNavigator(
   config
 );
 
+const ProfileStack = createStackNavigator(
+  {
+    Home: {
+      screen: HomeScreen
+    },
+    PageView: {
+      screen: PageView
+    }
+  },
+  config
+);
+
 HomeStack.navigationOptions = ({ screenProps: { t } }) => ({
   drawerLabel: t('home'),
   tabBarLabel: t('home'),
@@ -102,7 +114,24 @@ HomeStack.navigationOptions = ({ screenProps: { t } }) => ({
   )
 })
 
+ProfileStack.navigationOptions = ({ screenProps: { t }}) => ({
+  drawerLabel: t("profile"),
+  tabBarLabel: t("profile"),
+  path: 'profiles',
+  tabBarIcon: ({ focused }) => (
+    <TabBarIcon 
+      focused={focused}
+      name={
+        Platform.OS === 'ios'
+        ? `ios-home`
+        : `md-home`
+      }
+    />
+  )
+})
+
 HomeStack.path = '';
+ProfileStack.path = '';
 
 // Resources Stack
 const ResourcesStack = createStackNavigator(
@@ -349,6 +378,7 @@ const tabNavigator = createBottomTabNavigator({
   LinksStack,
   NewsStack,
   SettingsStack,
+  ProfileStack
 }, {
   tabBarOptions: {
     unmountInactiveRoutes: true,
@@ -374,7 +404,8 @@ const Drawer = createDrawerNavigator({
   DownloadsStack,
   LinksStack,
   NewsStack,
-  SettingsStack
+  SettingsStack,
+  ProfileStack
 },{
   contentComponent: CustomDrawerComponent,
   //drawerPosition: (Setting.language != 'en') ? 'right' : 'left',

@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "DDL",
-    "slug": "DarakhtDaneshApp",
+    "slug": "darakht-e-danesh-library",
     "privacy": "public",
     "platforms": [
       "ios",
@@ -36,8 +36,9 @@
     "primaryColor": "#FFA800",
     "extra": {
       "eas": {
-        "projectId": "55a17613-b6ca-4427-92a2-de2e8821a00c"
+        "projectId": "dfeb2869-9578-4f91-9a56-4f1626d1a529"
       }
-    }
+    },
+    "owner": "right-to-learn"
   }
 }
